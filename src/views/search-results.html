@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% set bodyId = "page-search-results" %}
+
+{% block title %}
+  <title>Resultado da Pesquisa</title>
+{% endblock title %}
+
+{% block styles %}
+  <link rel="stylesheet" href="css/search-results.css">
+{% endblock styles %}
+
+{% block bodyContent %}
+  <header>
+    <img src="img/logo.svg" alt="Logo Ecoleta">
+    <a href="/">
+      <span></span>
+      Voltar para a Home
+    </a>
+  </header>	
+  
+  <main>
+  
+  
+    {% if places.length > 0 %}
+
+      <h4><strong>{{places.length}} pontos</strong> encontrados</h4>
+
+      <div class="cards">
+
+        {% for place in places %}
+          
+          <div class="card">
+            <img src="{{ place.image }}" alt="{{place.name}}">
+            <h2>{{place.name}}</h2>
+            <h3>{{place.items}}</h3>
+            <p>
+              {{place.city}} <br>
+              {{place.state}} <br>
+              {{place.address}}, {{place.address2}}
+            </p>
+          </div>
+
+        {% endfor %}
+
+      </div>
+    {% else %}
+
+      <h4><strong>Nenhum ponto</strong> encontrado :(</h4>
+
+    {% endif %}
+    
+    
+  </main>
+{% endblock bodyContent %}
