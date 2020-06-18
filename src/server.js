@@ -37,8 +37,6 @@ server.post("/save-point", (req, res) => {
 
     // console.log(req.body)
 
-
-
     //INSERIR DADOS NA TABELA
     const queryInsert = `
         INSERT INTO places (name, image, address, address2, state, city, items) 
@@ -84,6 +82,27 @@ server.get("/search", (req, res) => {
     })
 
 
+    
+    // return res.render("search-results.html")
+})
+
+server.get("/list-points", (req, res) => {
+    //pegar os dados do banco de dados
+
+    const idDelete = req.query.del
+    let querySelect = `SELECT * FROM places ORDER BY name ASC`
+
+    db.all(querySelect, function(err, rows){
+        if(err){
+            console.log(err)
+        }
+
+        console.log(rows)
+        console.log(querySelect)
+        return res.render("list-points.html", { places: rows })
+    })
+
+    
     
     // return res.render("search-results.html")
 })
