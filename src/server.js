@@ -102,11 +102,11 @@ server.get("/list-points", (req, res) => {
         return res.render("list-points.html", { places: rows })
     })
 
-    
+
     
     // return res.render("search-results.html")
 })
 
 
 //ligar o servidor
-server.listen(3000)
+server.listen(8080)
