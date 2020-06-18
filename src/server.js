@@ -2,6 +2,7 @@ const express     = require("express");
 const serverless  = require("serverless-http");
 const server      = express()
 
+const router = express.Router()
 
 
 //pegar o banco de dados
@@ -25,18 +26,18 @@ nunjucks.configure("src/views", {
 //página inicial
 //req = requisição
 //res = resposta
-server.get("/", (req, res) => {
+router.get("/", (req, res) => {
     return res.render("index.html")
 })
 
-server.get("/create-point", (req, res) => {
+router.get("/create-point", (req, res) => {
 
     console.log(req.query)
 
     return res.render("create-point.html")
 })
 
-server.post("/save-point", (req, res) => {
+router.post("/save-point", (req, res) => {
 
     // console.log(req.body)
 
@@ -68,7 +69,7 @@ server.post("/save-point", (req, res) => {
     db.run(queryInsert, values, afterInsertData)
 })
 
-server.get("/search", (req, res) => {
+router.get("/search", (req, res) => {
     //pegar os dados do banco de dados
 
     const cidade = req.query.search
@@ -89,7 +90,7 @@ server.get("/search", (req, res) => {
     // return res.render("search-results.html")
 })
 
-server.get("/list-points", (req, res) => {
+router.get("/list-points", (req, res) => {
     //pegar os dados do banco de dados
 
     const idDelete = req.query.del
@@ -113,4 +114,7 @@ server.get("/list-points", (req, res) => {
 
 //ligar o servidor
 //server.listen(8080)
+
+//exportar app para netlify
+app.use('/.netlify/functions/api', router)
 module.exports.handler = serverless(server)
