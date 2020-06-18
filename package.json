@@ -2,9 +2,8 @@
   "name": "NextLevelWeek",
   "version": "1.0.0",
   "scripts": {
-    "start": "node src/server.js",
-    "build": "build src",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "./node_modules/.bin/netlify-lambda serve src",
+    "build": "./node_modules/.bin/netlify-lambda build src"
   },
   "dependencies": {
     "express": "^4.17.1",
@@ -13,7 +12,5 @@
     "serverless-http": "^2.5.0",
     "sqlite3": "^4.2.0"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.4"
-  }
+  "devDependencies": {}
 }
