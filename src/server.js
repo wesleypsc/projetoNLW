@@ -1,5 +1,8 @@
-const express   = require("express")
-const server    = express()
+const express     = require("express");
+const serverless  = require("serverless-http");
+const server      = express()
+
+
 
 //pegar o banco de dados
 const db = require("./database/db") //não é necessário colocar a extensão .js
@@ -109,4 +112,5 @@ server.get("/list-points", (req, res) => {
 
 
 //ligar o servidor
-server.listen(8080)
+//server.listen(8080)
+module.exports.handler = serverless(server)
