@@ -116,5 +116,5 @@ router.get("/list-points", (req, res) => {
 //server.listen(8080)
 
 //exportar app para netlify
-app.use('/.netlify/functions/api', router)
+app.use('/.netlify/functions/server', router)
 module.exports.handler = serverless(server)
