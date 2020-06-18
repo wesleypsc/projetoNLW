@@ -8,7 +8,7 @@ const server      = express()
 const db = require("./database/db") //não é necessário colocar a extensão .js
 
 //configurar pasta publica
-server.use(express.static("public"))
+server.use(express.static("/public"))
 
 //habilitart o uso do req.body
 server.use(express.urlencoded({extended: true}))
