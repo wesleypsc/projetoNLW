@@ -29,6 +29,13 @@ db.serialize(() => {
             city TEXT, 
             items TEXT
         );    
+        
+        CREATE TABLE IF NOT EXISTS usuarios(
+            id INTEGER PRIMARY KEY AUTOINCREMENT, 
+            user TEXT, 
+            pass TEXT, 
+            level INTEGER
+        );    
     `) 
 
 

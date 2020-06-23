@@ -1,0 +1,6 @@
+[build]
+
+ functions = "functions"
+ css = "public/css"
+ img = "public/img"
+ js  = "public/js"
